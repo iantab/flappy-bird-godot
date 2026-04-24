@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b4fkbvhlgex47" path="res://assets/background.png" id="2_2pwms"]
 [ext_resource type="PackedScene" uid="uid://bu6wu6qh4vtb6" path="res://bird.tscn" id="2_xoild"]
 [ext_resource type="Texture2D" uid="uid://dd2yxgpwpss3b" path="res://assets/ground.png" id="3_xoild"]
+[ext_resource type="Script" uid="uid://du26s5mtyxkhk" path="res://src/GameManager.cs" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dkwqef5x24lq4" path="res://pipe_pair.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node" unique_id=1941154015]
 
@@ -30,3 +32,12 @@ centered = false
 
 [node name="Bird" parent="." unique_id=1628050442 instance=ExtResource("2_xoild")]
 position = Vector2(256, 144)
+
+[node name="GameManager" type="Node" parent="." unique_id=498498324]
+script = ExtResource("5_lquwl")
+PipePairScene = ExtResource("6_7mycd")
+SpawnTimerPath = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="GameManager" unique_id=91913472]
+wait_time = 2.0
+autostart = true

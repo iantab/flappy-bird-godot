@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dkwqef5x24lq4"]
+
+[ext_resource type="Script" uid="uid://i0u8esktp813" path="res://src/PipePair.cs" id="1_bmsf8"]
+[ext_resource type="PackedScene" uid="uid://yi6l4qijgdo3" path="res://pipe.tscn" id="1_nep78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmsf8"]
+size = Vector2(70, 144)
+
+[node name="PipePair" type="Node2D" unique_id=23378317]
+script = ExtResource("1_bmsf8")
+UpperPipePath = NodePath("UpperPipe")
+LowerPipePath = NodePath("LowerPipe")
+
+[node name="UpperPipe" parent="." unique_id=2027839110 instance=ExtResource("1_nep78")]
+position = Vector2(96, 0)
+rotation = -3.1415927
+
+[node name="LowerPipe" parent="." unique_id=538922975 instance=ExtResource("1_nep78")]
+position = Vector2(26, 144)
+
+[node name="ScoreZone" type="Area2D" parent="." unique_id=1068919628]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone" unique_id=111883857]
+position = Vector2(61, 72)
+shape = SubResource("RectangleShape2D_bmsf8")
