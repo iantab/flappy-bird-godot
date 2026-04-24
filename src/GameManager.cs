@@ -11,6 +11,8 @@ public partial class GameManager : Node
 	[Export] public NodePath TitleLabelPath;
 	[Export] public NodePath MessageLabelPath;
 	[Export] public NodePath ScoreLabelPath;
+	[Export] public NodePath ScorePlayerPath;
+	[Export] public NodePath ExplosionPlayerPath;
 	
 	private Timer spawnTimer;
 	private Bird bird;
@@ -20,6 +22,8 @@ public partial class GameManager : Node
 	private int score = 0;
 	private float countdown = 3f;
 	private float lastGapY = 144f;
+	private AudioStreamPlayer scorePlayer;
+	private AudioStreamPlayer explosionPlayer;
 	
 	public override void _Ready()
 	{
@@ -31,6 +35,8 @@ public partial class GameManager : Node
 		scoreLabel = GetNode<Label>(ScoreLabelPath);
 		bird.Crashed += OnBirdCrashed;
 		EnterTitleState();
+		scorePlayer = GetNode<AudioStreamPlayer>(ScorePlayerPath);
+		explosionPlayer = GetNode<AudioStreamPlayer>(ExplosionPlayerPath);
 	}
 	
 	public override void _Process(double delta)
@@ -80,6 +86,7 @@ public partial class GameManager : Node
 		State = GameState.Score;
 		spawnTimer.Stop();
 		messageLabel.Text = $"Score: {score}\nPress Enter to restart";
+		explosionPlayer.Play();
 	}
 
 	private void OnSpawnTimerTimeout()
@@ -99,6 +106,7 @@ public partial class GameManager : Node
 	{
 		score++;
 		scoreLabel.Text = score.ToString();
+		scorePlayer.Play();
 	}
 
 	
