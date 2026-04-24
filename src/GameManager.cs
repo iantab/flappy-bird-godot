@@ -91,7 +91,14 @@ public partial class GameManager : Node
 		PipePair pair = PipePairScene.Instantiate<PipePair>();
 		pair.Position = new Vector2(550, 0); // just off-screen right
 		pair.Configure(newGapY);
+		pair.ScoredByBird += OnPairScored;
 		GetParent().AddChild(pair);
+	}
+
+	private void OnPairScored()
+	{
+		score++;
+		scoreLabel.Text = score.ToString();
 	}
 
 	

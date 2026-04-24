@@ -7,8 +7,26 @@ public partial class PipePair : Node2D
 	
 	[Export] public NodePath UpperPipePath;
 	[Export] public NodePath LowerPipePath;
+	[Export] public NodePath ScoreZonePath;
 	
 	public bool Scored { get; set; } = false;
+
+	[Signal]
+	public delegate void ScoredByBirdEventHandler();
+
+	public override void _Ready()
+	{
+		var zone = GetNode<Area2D>(ScoreZonePath);
+		zone.BodyEntered += OnScoreZoneEntered;
+	}
+
+	private void OnScoreZoneEntered(Node2D body)
+	{
+		if (body is not Bird) return;
+		if (Scored) return;
+		Scored = true;
+		EmitSignal(SignalName.ScoredByBird);
+	}
 
 	public void Configure(float gapCenterY)
 	{

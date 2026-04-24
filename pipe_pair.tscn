@@ -10,6 +10,7 @@ size = Vector2(70, 144)
 script = ExtResource("1_bmsf8")
 UpperPipePath = NodePath("UpperPipe")
 LowerPipePath = NodePath("LowerPipe")
+ScoreZonePath = NodePath("ScoreZone")
 
 [node name="UpperPipe" parent="." unique_id=2027839110 instance=ExtResource("1_nep78")]
 position = Vector2(96, 0)
