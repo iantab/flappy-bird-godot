@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnnfa2ncbg20q" path="res://assets/bird.png" id="1_g5k2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crnqq"]
-size = Vector2(38, 24)
+size = Vector2(5, 2)
 
 [node name="Bird" type="CharacterBody2D" unique_id=1628050442]
 script = ExtResource("1_crnqq")
